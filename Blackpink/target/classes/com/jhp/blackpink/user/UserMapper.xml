@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhp.blackpink.user.UserMapper"> 
+	<select id="selUser" parameterType="com.jhp.blackpink.user.UserVO" resultType="com.jhp.blackpink.user.UserVO">
+		SELECT i_user,uid,upw,nm,s_pk,r_dt FROM t_blackpink_user WHERE s_pk = #{s_pk}
+	</select>
+
+	<insert id="insUser" parameterType="com.jhp.blackpink.user.UserVO" >
+		INSERT INTO t_blackpink_user(uid,upw,nm,s_pk) VALUES(#{uid},#{upw},#{nm},#{s_pk})
+	</insert>
+		
+</mapper>	

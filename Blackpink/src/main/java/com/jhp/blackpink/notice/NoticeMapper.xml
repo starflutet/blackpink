@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhp.blackpink.notice.NoticeMapper"> 
+	<select id="selNoticeList" resultType="com.jhp.blackpink.notice.NoticeVO">
+		SELECT i_notice,i_user,nm,title,r_dt FROM t_blackpink_notice ORDER BY i_notice DESC
+	</select>
+	<select id ="selNoticeDetail" resultType="com.jhp.blackpink.notice.NoticeVO" parameterType="com.jhp.blackpink.notice.NoticeVO">
+		SELECT i_notice,i_user,title,noticetnt,r_dt FROM t_blackpink_notice WHERE i_notice=#{i_notice}
+	</select>
+	<insert id="insNotice" parameterType="com.jhp.blackpink.notice.NoticeVO" >
+		INSERT INTO t_blackpink_notice(i_user,nm,title, noticetnt) VALUES(#{i_user},#{nm},#{title},#{noticetnt})
+	</insert>
+	
+	<delete id="delNotice" parameterType="com.jhp.blackpink.notice.NoticeVO">
+		DELETE FROM t_blackpink_notice WHERE i_notice = #{i_notice}
+	</delete>
+	
+	<update id="updNotice" parameterType="com.jhp.blackpink.notice.NoticeVO">
+		UPDATE t_blackpink_notice SET title = #{title}, noticetnt = #{noticetnt} WHERE i_notice= #{i_notice}
+	</update>
+</mapper>	
+<!-- 시간나면 딜리트랑 업데이트 쪽 이너조인 시키자 -->
